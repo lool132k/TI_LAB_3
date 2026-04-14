@@ -306,7 +306,7 @@ begin
 
   OutStream := TFileStream.Create(EditOutput.Text, fmCreate);
   try
-    Log('Зашифрованные блоки');
+    Log('=== Зашифрованные блоки (десятичная СС) ===');
     LogLine := '';
     LogCount := 0;
     for I := 0 to High(Buffer) do
@@ -408,7 +408,8 @@ begin
           ShowMessage(
             'Не удалось однозначно расшифровать блок #' + IntToStr(I) + '.' + #13#10 +
             'c = ' + UIntToStr(C) + #13#10 +
-            'Ни один из 4 корней не попал в диапазон [0..255].' + #13#10);
+            'Ни один из 4 корней не попал в диапазон [0..255].' + #13#10 +
+            'Попробуйте использовать бо́льшие p и q.');
           Exit;
         end;
         OutStream.WriteBuffer(PlainByte, 1);
